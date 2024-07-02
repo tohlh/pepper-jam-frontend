@@ -15,7 +15,7 @@ export default function Home() {
 
     return (
         <AuroraBackground>
-            <main className="flex min-h-screen flex-col items-center justify-between p-10">
+            <main className="flex min-h-screen flex-col items-center gap-5 p-10">
                 <UploadForm setId={setId} setTranscription={setTranscription} />
                 <TranscriptionForm
                     id={id}

@@ -56,7 +56,7 @@ export default function TranslationForm({
             <select
                 value={fromLang}
                 onChange={(e) => setFromLang(e.target.value)}
-                className=""
+                className="block px-4 py-2 mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
             >
                 <option value="en">English</option>
                 <option value="zh">Mandarin</option>
@@ -70,9 +70,15 @@ export default function TranslationForm({
             <textarea
                 value={captions}
                 onChange={(e) => setCaptions(e.target.value)}
+                className="block text-center mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                placeholder="Enter your text"
             />
 
-            <select value={toLang} onChange={(e) => setToLang(e.target.value)}>
+            <select
+                value={toLang}
+                onChange={(e) => setToLang(e.target.value)}
+                className="block px-4 py-2 mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            >
                 <option value="en">English</option>
                 <option value="zh">Mandarin</option>
                 <option value="es">Spanish</option>
@@ -82,7 +88,12 @@ export default function TranslationForm({
                 <option value="ja">Japanese</option>
                 <option value="ko">Korean</option>
             </select>
-            <textarea value={translation} readOnly />
+            <textarea
+                value={translation}
+                readOnly
+                className="block text-center mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+                placeholder="Your result"
+            />
             <BorderButton
                 title="Translate"
                 position="left"
