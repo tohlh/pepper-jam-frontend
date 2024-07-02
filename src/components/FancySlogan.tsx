@@ -5,13 +5,7 @@ import { HeroHighlight, Highlight } from "./ui/HeroHighlight";
 import { motion } from "framer-motion";
 import { FlipWords } from "./ui/FlipWords";
 
-const words = [
-    "Communication",
-    "Connections",
-    "Understanding",
-    "Innovation",
-    "Growth",
-];
+const words = ["Communication", "Connections", "Understanding"];
 
 const FancySlogan = () => {
     return (
