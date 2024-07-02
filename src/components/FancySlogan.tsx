@@ -13,7 +13,6 @@ const FancySlogan = () => {
                     Across Boundaries
                 </Highlight>
             </div>
-            <GridGlobe></GridGlobe>
         </div>
     );
 };

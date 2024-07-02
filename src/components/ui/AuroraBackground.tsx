@@ -22,7 +22,7 @@ export const AuroraBackground = ({
                 )}
                 {...props}
             >
-                <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute inset-0 overflow-hidden z-0">
                     <div
                         //   I'm sorry but this is what peak developer performance looks like // trigger warning
                         className={cn(
@@ -47,7 +47,7 @@ export const AuroraBackground = ({
                         )}
                     ></div>
                 </div>
-                {children}
+                <div className="z-10">{children}</div>
             </div>
         </main>
     );
