@@ -18,12 +18,12 @@ const BorderButton = ({
 }) => {
     return (
         <button
-            className="p-[1.5px] relative px-4 py-2 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+            className="p-[1.5px] relative px-2 py-1 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
             type={type}
             onClick={handleClick}
         >
             <div className="absolute rounded-lg" />
-            <div className="px-3 inline-flex justify-center items-center gap-2">
+            <div className="px-2 inline-flex justify-center items-center gap-2">
                 {position === "left" && icon}
                 {title}
                 {position === "right" && icon}
