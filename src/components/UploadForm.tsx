@@ -16,6 +16,8 @@ export default function UploadForm({
 }: UploadFormProps) {
     const [video, setVideo] = useState<File | null>(null);
 
+    const [fromLang, setFromLang] = useState("en");
+
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const file = event.target.files?.[0];
         setVideo(file || null);
@@ -26,7 +28,7 @@ export default function UploadForm({
         if (!video) {
             return;
         }
-        const res = await uploadFile({ video });
+        const res = await uploadFile({ video, fromLang });
         if (res) {
             setId(res.id);
             setTranscription(res.captions);
@@ -34,8 +36,27 @@ export default function UploadForm({
     };
 
     return (
-        <form onSubmit={(e) => handleSubmit(e)}>
-            <input type="file" accept="video/*" onChange={handleFileChange} />
+        <form onSubmit={(e) => handleSubmit(e)} className="flex gap-5">
+            <input
+                type="file"
+                accept="video/*"
+                onChange={handleFileChange}
+                className="w-min"
+            />
+            <select
+                value={fromLang}
+                onChange={(e) => setFromLang(e.target.value)}
+                className="block px-4 py-2 mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
+            >
+                <option value="en">English</option>
+                <option value="zh">Mandarin</option>
+                <option value="es">Spanish</option>
+                <option value="fr">French</option>
+                <option value="de">German</option>
+                <option value="it">Italian</option>
+                <option value="ja">Japanese</option>
+                <option value="ko">Korean</option>
+            </select>
             <BorderButton
                 title="Upload"
                 icon={<FaUpload />}
