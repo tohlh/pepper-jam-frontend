@@ -32,7 +32,6 @@ export async function uploadFile({ video, fromLang }: UploadRequest) {
 export type TranslationRequest = {
     id: string;
     captions: string;
-    fromLang: string;
     toLang: string;
 };
 
@@ -45,7 +44,6 @@ export type TranslationResponse = {
 export async function updateTranscription({
     id,
     captions,
-    fromLang,
     toLang,
 }: TranslationRequest) {
     const response = await fetch(API_URL + "/api/transcription", {
@@ -53,7 +51,7 @@ export async function updateTranscription({
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify({ id, captions, fromLang, toLang }),
+        body: JSON.stringify({ id, captions, toLang }),
     });
 
     if (!response.ok) {
