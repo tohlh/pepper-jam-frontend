@@ -54,7 +54,7 @@ export default function UploadForm({
       <form onSubmit={(e) => handleSubmit(e)} className="flex gap-5">
         <div className="flex flex-col justify-between h-full gap-2">
           <input type="file" accept="video/*" onChange={handleFileChange} />
-          <label className="mt-2 mb-0">Translate from:</label>
+          <label className="mt-2 mb-0">Transcribe from:</label>
           <select
             value={fromLang}
             onChange={(e) => setFromLang(e.target.value)}
