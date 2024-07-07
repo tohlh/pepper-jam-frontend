@@ -28,11 +28,19 @@ export default function UploadForm({
     if (!video) {
       return;
     }
-    const res = await uploadFile({ video, fromLang });
-    console.log(res);
-    if (res) {
-      setId(res.id);
-      setTranscription(res.captions);
+    try {
+
+      const res = await uploadFile({ video, fromLang });
+      console.log(res);
+      if (res) {
+        setId(res.id);
+        setTranscription(res.captions);
+      }
+    } catch (err: any) {
+      for (const key in err) {
+        console.log(key, err[key])
+      }
+      console.error(err)
     }
   };
 

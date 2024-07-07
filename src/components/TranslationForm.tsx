@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { generateVideo, updateTranscription } from "@/services/ApiClient";
 import BorderButton from "./ui/BorderButton";
 import { BsTranslate } from "react-icons/bs";
@@ -20,6 +20,12 @@ export default function TranslationForm({
     const [captions, setCaptions] = useState(transcription);
     const [translation, setTranslation] = useState("");
     const [toLang, setToLang] = useState("zh");
+
+    useEffect(() => {
+      if (transcription) {
+        setCaptions(transcription)
+      }
+    }, [transcription])
 
     const handleTranslate = async (event: React.FormEvent) => {
         event.preventDefault();
