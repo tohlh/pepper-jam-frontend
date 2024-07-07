@@ -1,8 +1,4 @@
 import React from "react";
-import { GridGlobe } from "./ui/GridGlobe";
-import exp from "constants";
-import { HeroHighlight, Highlight } from "./ui/HeroHighlight";
-import { motion } from "framer-motion";
 import { FlipWords } from "./ui/FlipWords";
 
 const words = ["Communication", "Connections", "Understanding"];

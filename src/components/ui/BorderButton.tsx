@@ -1,4 +1,3 @@
-import exp from "constants";
 import React from "react";
 
 const BorderButton = ({
@@ -6,7 +5,6 @@ const BorderButton = ({
     icon,
     position,
     handleClick,
-    otherClasses,
     type,
 }: {
     title: string;

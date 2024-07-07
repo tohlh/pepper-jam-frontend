@@ -9,13 +9,11 @@ import { IoEnterSharp } from "react-icons/io5";
 type TranslationFormProps = {
   id: string;
   transcription: string;
-  setVideoLink: (videoLink: string) => void;
 };
 
 export default function TranslationForm({
   id,
-  transcription,
-  setVideoLink,
+  transcription
 }: TranslationFormProps) {
   const [captions, setCaptions] = useState(transcription);
   const [translation, setTranslation] = useState("");
@@ -64,6 +62,7 @@ export default function TranslationForm({
           className="block w-84 text-center mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           placeholder="Check Transcription"
         />
+        <label className="mt-2 mb-0">Translate to:</label>
         <select
           value={toLang}
           onChange={(e) => setToLang(e.target.value)}
