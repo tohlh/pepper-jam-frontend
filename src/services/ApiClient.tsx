@@ -46,7 +46,7 @@ export async function updateTranscription({
   captions,
   toLang,
 }: TranslationRequest) {
-  const response = await fetch(API_URL + "/api/transcription", {
+  const response = await fetch(API_URL + "/api/translate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
