@@ -48,10 +48,7 @@ export default function TranslationForm({
       return;
     }
 
-    const res = await generateVideo({ id, toLang, translation });
-    if (res) {
-      setVideoLink(translation);
-    }
+    await generateVideo({ id, toLang, translation });
   };
 
   return (

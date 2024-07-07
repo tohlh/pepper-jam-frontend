@@ -89,5 +89,15 @@ export async function generateVideo({
     window.alert("Failed to generate video");
   }
 
-  return response.json();
+
+  const blob = await response.blob();
+  const url = window.URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'translated.mp4'; // Provide a default file name and extension
+  document.body.appendChild(a);
+  a.click();
+  a.remove();
+  
+  return
 }
