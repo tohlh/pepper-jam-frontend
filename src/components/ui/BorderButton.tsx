@@ -1,4 +1,7 @@
+import { cn } from "@/utils/cn";
+import exp from "constants";
 import React from "react";
+import { FaSpinner } from "react-icons/fa";
 
 const BorderButton = ({
     title,
@@ -6,6 +9,7 @@ const BorderButton = ({
     position,
     handleClick,
     type,
+    loading,
 }: {
     title: string;
     icon: React.ReactNode;
@@ -13,18 +17,27 @@ const BorderButton = ({
     handleClick?: (event: React.FormEvent) => void;
     otherClasses?: string;
     type?: "submit" | "button";
+    loading: boolean;
 }) => {
+
+    const btnIcon = loading ? <FaSpinner className="animate-spin" /> : icon;
     return (
         <button
-            className="p-[1.5px] relative px-2 py-1 rounded-md border border-black bg-white text-black text-sm hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)] transition duration-200"
+            className={cn(
+                "p-[1.5px] relative px-2 py-1 rounded-md border border-black bg-white text-black text-sm transition duration-200",
+                !loading ? "hover:shadow-[4px_4px_0px_0px_rgba(0,0,0)]" : "opacity-50 cursor-not-allowed",
+            )}
+
             type={type}
+            disabled={loading}
             onClick={handleClick}
         >
             <div className="absolute rounded-lg" />
             <div className="px-2 inline-flex justify-center items-center gap-2">
-                {position === "left" && icon}
+
+                {position === "left" && btnIcon}
                 {title}
-                {position === "right" && icon}
+                {position === "right" && btnIcon}
             </div>
         </button>
     );

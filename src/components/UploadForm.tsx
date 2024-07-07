@@ -17,6 +17,7 @@ export default function UploadForm({
   const [video, setVideo] = useState<File | null>(null);
 
   const [fromLang, setFromLang] = useState("en");
+  const [loading, setLoading] = useState(false)
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
@@ -24,11 +25,13 @@ export default function UploadForm({
   };
 
   const handleSubmit = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!video) {
-      return;
-    }
     try {
+      setLoading(true)
+      event.preventDefault();
+      if (!video) {
+        return;
+      }
+
       const res = await uploadFile({ video, fromLang });
       console.log(res);
       if (res) {
@@ -39,7 +42,9 @@ export default function UploadForm({
       for (const key in err) {
         console.log(key, err[key]);
       }
-      console.error(err);
+      console.error(err)
+    } finally {
+      setLoading(false)
     }
   };
 
@@ -87,6 +92,7 @@ export default function UploadForm({
           </select>
           <BorderButton
             title="Upload"
+            loading={loading}
             icon={<FaUpload />}
             position="left"
             type="submit"

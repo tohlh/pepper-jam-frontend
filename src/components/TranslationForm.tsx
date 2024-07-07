@@ -17,7 +17,9 @@ export default function TranslationForm({
 }: TranslationFormProps) {
   const [captions, setCaptions] = useState(transcription);
   const [translation, setTranslation] = useState("");
-  const [toLang, setToLang] = useState("zh");
+  const [toLang, setToLang] = useState("en");
+  const [translateLoading, setTranslateLoading] = useState(false)
+  const [generateloading, setGenerateLoading] = useState(false)
 
   useEffect(() => {
     if (transcription) {
@@ -26,27 +28,42 @@ export default function TranslationForm({
   }, [transcription]);
 
   const handleTranslate = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!captions) {
-      return;
+    try {
+      setTranslateLoading(true)
+      event.preventDefault();
+      if (!captions) {
+        return;
+      }
+      const res = await updateTranscription({
+        id,
+        captions,
+        toLang,
+      });
+      if (res) {
+        setTranslation(res.translation);
+      }
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setTranslateLoading(false)
     }
-    const res = await updateTranscription({
-      id,
-      captions,
-      toLang,
-    });
-    if (res) {
-      setTranslation(res.translation);
-    }
+
   };
 
   const handleGenerate = async (event: React.FormEvent) => {
-    event.preventDefault();
-    if (!translation) {
-      return;
+    try {
+      setGenerateLoading(true)
+      event.preventDefault();
+      if (!translation) {
+        return;
+      }
+      
+      await generateVideo({ id, toLang, translation });
+    } catch (err) {
+      console.error(err)
+    } finally {
+      setGenerateLoading(false)
     }
-
-    await generateVideo({ id, toLang, translation });
   };
 
   return (
@@ -58,6 +75,7 @@ export default function TranslationForm({
       >
         <textarea
           value={captions}
+          rows={7}
           onChange={(e) => setCaptions(e.target.value)}
           className="block w-84 text-center mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           placeholder="Check Transcription"
@@ -69,7 +87,7 @@ export default function TranslationForm({
           className="block px-4 py-2 mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
         >
           <option value="en">English</option>
-          <option value="zh-cn">Chinese</option>
+          <option value="zh-CN">Chinese</option>
           <option value="es">Spanish</option>
           <option value="ja">Japanese</option>
           <option value="ko">Korean</option>
@@ -101,16 +119,19 @@ export default function TranslationForm({
         <textarea
           value={translation}
           readOnly
+          rows={7}
           className="block text-center mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           placeholder="Translation Result"
         />
         <BorderButton
+          loading={translateLoading}
           title="Translate"
           position="left"
           type="submit"
           icon={<BsTranslate />}
         />
         <BorderButton
+          loading={generateloading}
           title="Generate"
           position="left"
           icon={<IoEnterSharp />}
