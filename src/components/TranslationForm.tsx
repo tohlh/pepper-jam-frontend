@@ -73,16 +73,17 @@ export default function TranslationForm({
           className="block px-4 py-2 mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
         >
           <option value="en">English</option>
-          <option value="ja">Japanese</option>
           <option value="zh-cn">Chinese</option>
-          <option value="de">German</option>
-          <option value="hi">Hindi</option>
-          <option value="fr">French</option>
-          <option value="ko">Korean</option>
-          <option value="pt">Portuguese</option>
-          <option value="it">Italian</option>
           <option value="es">Spanish</option>
+          <option value="ja">Japanese</option>
+          <option value="ko">Korean</option>
+          <option value="hi">Hindi</option>
           <option value="id">Indonesian</option>
+          <option value="ar">Arabic</option>
+          <option value="fr">French</option>
+          <option value="de">German</option>
+          <option value="it">Italian</option>
+          <option value="pt">Portuguese</option>
           <option value="nl">Dutch</option>
           <option value="tr">Turkish</option>
           <option value="tl">Filipino</option>
@@ -90,7 +91,6 @@ export default function TranslationForm({
           <option value="sv">Swedish</option>
           <option value="bg">Bulgarian</option>
           <option value="ro">Romanian</option>
-          <option value="ar">Arabic</option>
           <option value="cs">Czech</option>
           <option value="el">Greek</option>
           <option value="fi">Finnish</option>
@@ -100,7 +100,7 @@ export default function TranslationForm({
           <option value="da">Danish</option>
           <option value="ta">Tamil</option>
           <option value="uk">Ukrainian</option>
-          <option value="ru">Russian</option>
+          <option value="ru">Russian</option>{" "}
         </select>
         <textarea
           value={translation}

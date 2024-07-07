@@ -29,7 +29,6 @@ export default function UploadForm({
       return;
     }
     try {
-
       const res = await uploadFile({ video, fromLang });
       console.log(res);
       if (res) {
@@ -38,9 +37,9 @@ export default function UploadForm({
       }
     } catch (err: any) {
       for (const key in err) {
-        console.log(key, err[key])
+        console.log(key, err[key]);
       }
-      console.error(err)
+      console.error(err);
     }
   };
 
@@ -56,13 +55,34 @@ export default function UploadForm({
             className="block px-4 py-2 mt-1 rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-200 focus:ring-opacity-50"
           >
             <option value="en">English</option>
-            <option value="zh">Mandarin</option>
+            <option value="zh-cn">Chinese</option>
             <option value="es">Spanish</option>
+            <option value="ja">Japanese</option>
+            <option value="ko">Korean</option>
+            <option value="hi">Hindi</option>
+            <option value="id">Indonesian</option>
+            <option value="ar">Arabic</option>
             <option value="fr">French</option>
             <option value="de">German</option>
             <option value="it">Italian</option>
-            <option value="ja">Japanese</option>
-            <option value="ko">Korean</option>
+            <option value="pt">Portuguese</option>
+            <option value="nl">Dutch</option>
+            <option value="tr">Turkish</option>
+            <option value="tl">Filipino</option>
+            <option value="pl">Polish</option>
+            <option value="sv">Swedish</option>
+            <option value="bg">Bulgarian</option>
+            <option value="ro">Romanian</option>
+            <option value="cs">Czech</option>
+            <option value="el">Greek</option>
+            <option value="fi">Finnish</option>
+            <option value="hr">Croatian</option>
+            <option value="ms">Malay</option>
+            <option value="sk">Slovak</option>
+            <option value="da">Danish</option>
+            <option value="ta">Tamil</option>
+            <option value="uk">Ukrainian</option>
+            <option value="ru">Russian</option>
           </select>
           <BorderButton
             title="Upload"
